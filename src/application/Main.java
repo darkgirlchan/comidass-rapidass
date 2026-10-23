@@ -9,8 +9,11 @@ public class Main {
         String[] turnos = {"Almuerzo","Tarde", "Noche", "madrugada"};
         double[][] ventas = new double[3][4];
         registrarVentas(ventas,productos,turnos);
-        double[] sumas =sumaPorTurno(ventas,turnos);
-        mostrarSumaTurno(sumas,turnos);
+        double[] sumasTurno =sumaPorTurno(ventas,turnos);
+        mostrarSumaTurno(sumasTurno,turnos);
+        double[] sumasProductos =sumaPorProductos(ventas,productos);
+        mostrarSumaProductos(sumasProductos,productos);
+
     }
     public static void registrarVentas(double[][] ventas, String[] productos, String[] turnos){
         for (int i = 0; i < productos.length; i++){
@@ -51,6 +54,21 @@ public class Main {
         System.out.println("Total de ventas por turno");
         for (int j = 0; j< turnos.length; j++){
             System.out.println(turnos[j] + ": " + sumas[j]);
+        }
+    }
+    public static double[] sumaPorProductos(double[][] ventas, String[] productos) {
+        double[] sumas = new double[productos.length];
+        for (int i=0; i< productos.length; i++){
+            for (int j=0; j< productos.length;j++){
+                sumas[i] += ventas[i][j];
+            }
+        }
+        return sumas;
+    }
+    public static void mostrarSumaProductos(double[] sumas, String[] productos){
+        System.out.println("Total de ventas por producto");
+        for (int i = 0; i< productos.length; i++){
+            System.out.println(productos[i] + ": " + sumas[i]);
         }
     }
 }
