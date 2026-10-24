@@ -13,9 +13,11 @@ public class Main {
         mostrarSumaTurno(sumasTurno,turnos);
         double[] sumasProductos =sumaPorProductos(ventas,productos);
         mostrarSumaProductos(sumasProductos,productos);
-        System.out.println("Total Recaudado: $" + totalRecaudado(ventas));
         mostrarMayorYMenorTurno(sumasTurno,turnos);
         mostrarMayorYMenorProducto(sumasProductos,productos);
+        double total= totalRecaudado(ventas);
+        System.out.println("Total Recaudado: $" + totalRecaudado(ventas));
+        verificarCumplimiento(total);
 
     }
     public static void registrarVentas(double[][] ventas, String[] productos, String[] turnos){
@@ -120,5 +122,12 @@ public class Main {
         int[] indices = mayorYMenorProducto(sumasProductos);
         System.out.println("Producto con mayores ventas: " + productos[indices[0]] + " con: " + sumasProductos[indices[0]] + " ventas");
         System.out.println("Producto con menores ventas: " + productos[indices[1]] + " con" + sumasProductos[indices[1]] + " ventas");
+    }
+    public static void verificarCumplimiento(double total){
+        if (total > 500000){
+            System.out.println("cumple con la meta de ventas");
+        } else {
+            System.out.println("No cumple con la meta de ventas");
+        }
     }
 }
