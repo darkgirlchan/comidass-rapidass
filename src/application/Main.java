@@ -13,6 +13,7 @@ public class Main {
         mostrarSumaTurno(sumasTurno,turnos);
         double[] sumasProductos =sumaPorProductos(ventas,productos);
         mostrarSumaProductos(sumasProductos,productos);
+        System.out.println("Total Recaudado: $" + totalRecaudado(ventas));
 
     }
     public static void registrarVentas(double[][] ventas, String[] productos, String[] turnos){
@@ -70,5 +71,14 @@ public class Main {
         for (int i = 0; i< productos.length; i++){
             System.out.println(productos[i] + ": " + sumas[i]);
         }
+    }
+    public static double totalRecaudado(double[][] ventas){
+        double total=0;
+        for (int i= 0;i<ventas.length;i++){
+            for (int j= 0; j<ventas[i].length;j++) {
+                total += ventas[i][j];
+            }
+        }
+        return total;
     }
 }
