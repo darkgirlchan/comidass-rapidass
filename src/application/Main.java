@@ -15,6 +15,7 @@ public class Main {
         mostrarSumaProductos(sumasProductos,productos);
         System.out.println("Total Recaudado: $" + totalRecaudado(ventas));
         mostrarMayorYMenorTurno(sumasTurno,turnos);
+        mostrarMayorYMenorProducto(sumasProductos,productos);
 
     }
     public static void registrarVentas(double[][] ventas, String[] productos, String[] turnos){
@@ -98,7 +99,26 @@ public class Main {
 
     public static void mostrarMayorYMenorTurno(double[] sumasTurno, String[] turnos){
         int[] indices = mayorYMenorTurno(sumasTurno);
-        System.out.println("Turno con mayores ventas: " + turnos[indices[0]] + " con: " + sumasTurno[indices[0]] + "ventas");
-        System.out.println("Turno con menores ventas: " + turnos[indices[1]] + " con: " + sumasTurno[indices[1]] + "ventas");
+        System.out.println("Turno con mayores ventas: " + turnos[indices[0]] + " con: " + sumasTurno[indices[0]] + " ventas");
+        System.out.println("Turno con menores ventas: " + turnos[indices[1]] + " con: " + sumasTurno[indices[1]] + " ventas");
+    }
+    public static int[] mayorYMenorProducto(double[] sumasProductos){
+        int mayor = 0;
+        int menor = 0;
+        for (int i = 1; i < sumasProductos.length; i++){
+            if (sumasProductos[i] > sumasProductos[mayor]){
+                mayor = i;
+            }
+            if (sumasProductos[i] < sumasProductos[menor]){
+                menor = i;
+            }
+        }
+        return new int[]{mayor, menor};
+    }
+
+    public static void mostrarMayorYMenorProducto(double[] sumasProductos, String[] productos){
+        int[] indices = mayorYMenorProducto(sumasProductos);
+        System.out.println("Producto con mayores ventas: " + productos[indices[0]] + " con: " + sumasProductos[indices[0]] + " ventas");
+        System.out.println("Producto con menores ventas: " + productos[indices[1]] + " con" + sumasProductos[indices[1]] + " ventas");
     }
 }
